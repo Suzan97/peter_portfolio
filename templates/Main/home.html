@@ -1,0 +1,291 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section id="intro" class="scrollspy-section">
+	<div class="main-slider">
+		<div class="slider-item jarallax" data-speed="0.2">
+			<img src="images/main-banner.jpg" alt="banner" class="jarallax-img">
+			<div class="banner-content">
+				<h2 class="banner-title txt-fx">Modern Designs</h2>
+				<div class="btn-wrap">
+					<a href="#" class="btn-with-line">View Project</a>
+				</div>
+			</div><!--banner-content--> 
+		</div><!--slider-item-->
+
+		<div class="slider-item jarallax" data-speed="0.2">
+			<img src="images/main-banner1.jpg" alt="banner" class="jarallax-img">
+			<div class="banner-content">
+				<h2 class="banner-title txt-fx">Clean & Minimal</h2>
+				<div class="btn-wrap">
+					<a href="#" class="btn-with-line">View Project</a>
+				</div>
+			</div><!--banner-content--> 
+		</div><!--slider-item-->
+
+		<div class="slider-item jarallax" data-speed="0.2">
+			<img src="images/main-banner1.jpg" alt="banner" class="jarallax-img">
+			<div class="banner-content">
+				<h2 class="banner-title txt-fx">Personalize and Customize</h2>
+				<div class="btn-wrap">
+					<a href="#" class="btn-with-line">View Project</a>
+				</div>
+			</div><!--banner-content--> 
+		</div><!--slider-item-->
+	</div><!--slider-->
+
+	<div class="button-container">
+		<button class="prev slick-arrow">
+			<i class="icon icon-chevron-thin-left"></i>
+		</button>
+		<button class="next slick-arrow">
+			<i class="icon icon-chevron-thin-right"></i>
+		</button>
+	</div>
+</section>
+
+<section id="about" class="scrollspy-section padding-xlarge">
+	<div class="container">
+		<div class="row">
+			
+			<div class="col-md-12">
+
+				<div class="section-header">
+					<div class="title">
+						<span>who am I</span>
+					</div>
+					<h2 class="section-title">About Me</h2>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+			
+			<div class="col-md-6">
+				<figure>
+					<img src="media/projects/goodhope.png" alt="about us" class="single-image">
+				</figure>
+			</div>
+			<div class="col-md-6 description text-lead">
+				<p>Hello, I'm Wafula Mola, an accomplished Architect with a passion for creating inspiring spaces that leave a lasting impact.</p>
+				<p>With over 30 years of experience in the field of Architecture, my journey has been an exhilarating exploration of design, innovation, and community empowerment.</p>
+				<p>With every project I undertake, I bring a blend of creativity, technical expertise, and a deep understanding of the impact architecture can have on people's lives..</p>
+
+				<div class="btn-wrap">
+					<a href="{% url 'download_cv' %}" class="btn btn-accent btn-xlarge btn-rounded">View my portfolio</a>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</section>
+
+<section id="portfolio" class="scrollspy-section bg-dark padding-large">
+	<div class="container">
+		
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="section-header">
+					<div class="title">
+						<span>Some of My Works</span>
+					</div>
+					<h2 class="section-title light">My Portfolio</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				
+				<div class="portfolio-tabs">
+					<ul class="tabs">
+					  <li data-tab-target="#all" class="active tab">All</li>
+                      {% for cat in category %}
+					  <li data-tab-target="#{{cat.name}}" class="tab">{{cat.name}}</li>
+                      {% endfor %}
+					</ul>
+
+					<div class="tab-content">
+					  <div id="{{i.category}}" data-tab-content class="active">
+					  	<div class="grid">
+                            {%  for i in project %}
+				    	  <a href="{{i.image.url}}" data-lightbox-gallery="gallery1" title="{{i.name}}" class="image-link"><img src="{{i.image.url}}"  class="tab-image"></a>
+                          {% endfor %}
+                        </div>
+                    </div>
+                    {% for cat in category %}
+                    <div id="{{ cat.name }}" data-tab-content>
+                        <div class="grid">
+                            {% for i in project %}
+                                {% if i.category == cat %}
+                                    <a href="{{ i.image.url }}" data-lightbox-gallery="gallery1" title="{{ i.name }}" class="image-link">
+                                        <img src="{{ i.image.url }}" class="tab-image" alt="{{ i.name }}">
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</section>
+
+
+<section id="services" class="scrollspy-section padding-large">
+	<div class="container">
+		<div class="row">
+			<div class="section-header col-12">
+				<div class="title">
+					<span>what I do</span>
+				</div>
+				<h2 class="section-title">Services</h2>
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-4">
+				<div class="services-item">
+					<span class="number">01</span>					
+				    <h3>Architectural Design</h3>
+				    <p>Providing expertise in designing aesthetically pleasing and functional buildings and spaces</p>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="services-item">
+					<span class="number">02</span>					
+				    <h3>Project Management</h3>
+				    <p>Overseeing the entire architectural project, from inception to completion, ensuring timelines and budgets are met.</p>
+				</div>
+				
+			</div>
+            <div class="col-md-4">
+				<div class="services-item">
+					<span class="number">03</span>					
+				    <h3>Sustainable Design</h3>
+				    <p>Incorporating environmentally friendly practices and technologies into architectural projects.</p>
+				</div>
+			</div>
+
+
+		</div>
+        
+        <div class="row">
+           
+            <div class="col-md-4">
+				<div class="services-item">
+					<span class="number">04</span>					
+				    <h3>Structural Engineering</h3>
+				    <p>Ensuring the safety and stability of buildings through advanced structural analysis and design.</p>
+				</div>
+			</div>
+
+            <div class="col-md-4">
+				<div class="services-item">
+					<span class="number">05</span>					
+				    <h3>Consultation and Advising</h3>
+				    <p> Offering expert advice and insights to clients, developers, and stakeholders.</p>
+				</div>
+			</div>
+
+            <div class="col-md-4">
+				<div class="services-item">
+					<span class="number">06</span>					
+				    <h3>Master Planning</h3>
+				    <p> Developing comprehensive plans for large-scale developments that integrate various architectural elements.</p>
+				</div>
+			</div>
+        </div>
+
+	</div>
+</section>
+
+
+<section id="contact" class="scrollspy-section bg-dark padding-large">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-6">
+
+				<div class="left-content">
+					
+					<div class="section-header">
+						<div class="title">
+							<span>Get in touch</span>
+						</div>
+						<h2 class="section-title light">Contact us</h2>
+					</div>
+					
+					<p>If you have any question about our process or company? Let us know how we can help you.</p>
+					
+					<form id="form-contact" class="form-light" action="{% url 'contact-form' %}" method="post">
+						{% csrf_token %}
+                        <p>
+						<input type="text" id="name" name="name" placeholder="Your Full Name*" required>
+						</p>
+						<p>
+						<input type="text" id="email" name="email" placeholder="Your Email Address" required>
+						</p>
+						<p>
+						<textarea name="message" id="message" placeholder="Your Message" required></textarea>
+						</p>
+						<p>
+						<label for="agree">
+							<input id="agree" name="agree" type="checkbox" required></input>
+							<span>I agree to privacy policy</span>
+						</label>
+						</p>
+						<button class="btn btn-accent btn-rounded btn-xlarge btn-full">Submit</button>
+					</form>
+
+
+				</div>
+
+			</div><!--left-content-->
+
+			<div class="col-md-6">
+				<div class="right-content">
+					
+							<div class="iconbox">
+								<i class="icon icon-location"></i>
+								<div class="detail">
+									<strong>Address 1:</strong> 
+									<p>Freedom Heights, Langata, Nairobi</p>
+								</div>
+							</div>
+							<div class="iconbox">
+								<i class="icon icon-phone"></i>
+								<div class="detail">
+									<strong>Phone:</strong> 
+									<p>+2547 9603 4977</p>
+								</div>
+							</div>
+							<div class="iconbox">
+								<i class="icon icon-mail3"></i>
+								<div class="detail">
+									<strong>Email:</strong> 
+									<p><a href="#">wafula917@gmail.com</a></p>
+								</div>
+							</div>
+					
+				</div>
+			</div><!--right-content-->
+
+		</div>
+
+	</div>
+</section>
+
+
+{% endblock %}

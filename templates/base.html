@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+	<head>
+        {% load static %}
+		<title>Wafula Mola Portfolio</title>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="format-detection" content="telephone=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="author" content="">
+	    <meta name="keywords" content="Architect, Architecture, Architecture Excellence, Building Design, Urban Planning, Sustainable architecture,Structural Engineering
+        Interior Spaces, Commercial Projects, Residential Design, Concept Design">
+	    <meta name="description" content="Welcome to the digital portfolio of Wafula Mola, a distinguished architect with a remarkable journey spanning over three decades in the field of architecture.">
+
+	    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+	    <link rel="stylesheet" type="text/css" href="{% static 'icomoon/icomoon.css' %}">
+	    <link rel="stylesheet" type="text/css" href="{% static 'css/vendor.css' %} ">
+	    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static '/favicon_io/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static '/favicon_io/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static '/favicon_io/favicon-16x16.png' %}">
+        <link rel="manifest" href="{% static '/site.webmanifest' %}">
+
+		<!-- script
+		================================================== -->
+		<script src="{% static 'js/modernizr.js' %}"></script>
+
+	</head>
+<body>
+
+
+
+<!-- header-start -->
+{% include 'includes/header.html' %}
+<!-- header-end -->
+
+{% block content %}
+
+{% endblock %}
+
+
+<!-- footer-start -->
+{% include 'includes/footer.html' %}
+<!-- footer-end -->
+
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/ui-easing.js' %}"></script>
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
+
