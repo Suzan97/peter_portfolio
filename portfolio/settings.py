@@ -13,6 +13,9 @@ import os
 from pathlib import Path
 from decouple import config
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -73,6 +76,7 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 SECRET_KEY = config('SECRET_KEY')
+
 DEBUG = config('DEBUG', default=False, cast=bool)
 DATABASES = {
     'default': {
@@ -130,11 +134,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT')
-EMAIL_USE_TLS = config('EMAIL_USE_TLS')
-EMAIL_USE_SSL = config('EMAIL_USE_SSL')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS=config('EMAIL_USE_TLS', default=True, cast=bool)
+EMAIL_HOST=config('EMAIL_HOST', default='smtp.gmail.com')
+EMAIL_PORT=config('EMAIL_PORT', default=587, cast=int)
+EMAIL_USE_SSL=config('EMAIL_USE_SSL', default=True, cast=bool)
+EMAIL_HOST_USER=config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD=config('EMAIL_HOST_PASSWORD')
+
+
 
 GITHUB_TOKEN = config('GITHUB_TOKEN')
+HEROKU_SECRET_KEY = config('HEROKU_SECRET_KEY')
+
+
+
