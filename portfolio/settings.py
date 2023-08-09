@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 
-ALLOWED_HOSTS = ['127.0.0.1', 'https://wmola-portfolio-61fdad2a8d79.herokuapp.com/', '.vercel.app']
+ALLOWED_HOSTS = ['127.0.0.1', '.now.sh', '.vercel.app']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'architect.apps.ArchitectConfig',
+ 
 ]
 
 MIDDLEWARE = [
@@ -79,11 +80,15 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': config('DB_NAME', default='db.sqlite3'),
-        'ATOMIC_REQUESTS': False,
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'JNlXDNoBEdhWEix3N46B',
+        'HOST': 'containers-us-west-60.railway.app',
+        'PORT': '7086',
     }
 }
 
@@ -122,10 +127,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = '/static/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles_build', 'static')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

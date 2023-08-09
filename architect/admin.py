@@ -4,5 +4,6 @@ from .models import *
 
 # Register your models here.
 
+admin.site.register(Slider)
 admin.site.register(Category)
 admin.site.register(Project)
