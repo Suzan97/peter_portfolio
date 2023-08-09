@@ -8,8 +8,7 @@ db.sqlite3
 *.key
 *.pem
 
-# Compiled static files
-static/
+
 
 # Django migrations
 **/migrations/
