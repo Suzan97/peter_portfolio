@@ -14,4 +14,4 @@ db.sqlite3
 **/migrations/
 
 # Ignore sensitive config files
-local_settings.py
+portfolio/settings.py
